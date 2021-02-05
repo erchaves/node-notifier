@@ -8,13 +8,18 @@ This branch currently pings an Eth GAS API once a minute (https://ethgasstation.
 - This code was written in like 2 seconds and it sucks. And I haven't clean up any of the forked code.
 
 ## How to run it
+install yarn if you don't have it
+```
+# npm install --global yarn
+```
+
 install deps
 ```
-#yarn
+# yarn
 ```
 run it
 ```
-#yarn example:mac:eth:gas
+# yarn example:mac:eth:gas
 ```
 ¯\\_(ツ)_/¯
 
