@@ -2,6 +2,23 @@
 
 This branch currently pings an Eth GAS API once a minute (https://ethgasstation.info/api/ethgasAPI.json?) and it will send you a mac browser alert if the eth gas price falls below 60 gwei.
 
+## Notes
+- I think this only works with a mac alert for now.
+- I'm not using an API key yet. Not sure if it will throttle the API after a while or if once a minute is fine.
+- This code was written in like 2 seconds and it sucks. And I haven't clean up any of the forked code.
+
+## How to run it
+install deps
+```
+#yarn
+```
+run it
+```
+#yarn example:mac:eth:gas
+```
+¯\\_(ツ)_/¯
+
+
 Below here is the readme from the original project ...
 
 ...
