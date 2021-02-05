@@ -8,6 +8,7 @@
     "test": "jest",
     "example": "node ./example/message.js",
     "example:mac": "node ./example/advanced.js",
+    "example:mac:eth:gas": "node ./example/mac-eth-gas.js",
     "example:mac:input": "node ./example/macInput.js",
     "example:windows": "node ./example/toaster.js",
     "example:windows:actions": "node ./example/toaster-with-actions.js",
@@ -51,6 +52,8 @@
     "prettier": "^2.0.5"
   },
   "dependencies": {
+    "axios": "^0.21.1",
+    "cron": "^1.8.2",
     "growly": "^1.3.0",
     "is-wsl": "^2.2.0",
     "semver": "^7.3.2",

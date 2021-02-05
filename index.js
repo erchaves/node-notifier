@@ -1,5 +1,7 @@
 var os = require('os');
 var utils = require('./lib/utils');
+var crontasks = require('./lib/crontasks');
+var getEthData = require('./lib/getEthData');
 
 // All notifiers
 var NotifySend = require('./notifiers/notifysend');
@@ -50,3 +52,6 @@ module.exports.NotificationCenter = NotificationCenter;
 module.exports.WindowsToaster = WindowsToaster;
 module.exports.WindowsBalloon = WindowsBalloon;
 module.exports.Growl = Growl;
+module.exports.crontasks = crontasks;
+module.exports.getEthData = getEthData;
+
