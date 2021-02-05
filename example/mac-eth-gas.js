@@ -29,6 +29,13 @@ var getInGwei = x => x/10;
 // The amount to check if we're at or below this.
 const threshold = 60;
 
+const startMsg = `The watcher has started.
+This will ping an Eth GAS API once a minute
+and it will send you a mac browser alert if the eth gas price falls below ${threshold} gwei.
+You can quit with:  ⌘ + .
+`
+
+
 crontasks.cronPingMinute({
   checkStatus,
   onTrigger: () => {
@@ -89,3 +96,5 @@ const notifyLowGas = function(safeLow) {
 nc.on('replied', function(obj, options, metadata) {
   console.log('User replied', metadata);
 });
+
+console.log(startMsg);
