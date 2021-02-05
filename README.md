@@ -1,3 +1,9 @@
+# Eth gas notifier  - this is a quick fork of node-notifier to test an eth gas notifier.
+
+This branch currently pings an Eth GAS API once a minute (https://ethgasstation.info/api/ethgasAPI.json?) and it will send you a mac browser alert if the eth gas price falls below 60 gwei.
+
+Below here is the readme from the original project ...
+
 # node-notifier [![NPM version][npm-image]][npm-url] [![Install size][size-image]][size-url] [![Build Status][travis-image]][travis-url]
 
 Send cross platform native notifications using Node.js. Notification Center for macOS,
