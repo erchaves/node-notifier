@@ -27,7 +27,7 @@ var trueAnswer = 'Most def.';
 var getInGwei = x => x/10;
 
 // The amount to check if we're at or below this.
-const threshold = 60;
+const threshold = 100;
 
 const startMsg = `The watcher has started.
 This will ping an Eth GAS API once a minute

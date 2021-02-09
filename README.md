@@ -1,6 +1,6 @@
 # Eth gas notifier  - this is a quick fork of node-notifier to test an eth gas notifier.
 
-This branch currently pings an Eth GAS API once a minute (https://ethgasstation.info/api/ethgasAPI.json?) and it will send you a mac browser alert if the eth gas price falls below 60 gwei.
+This branch currently pings an Eth GAS API once a minute (https://ethgasstation.info/api/ethgasAPI.json?) and it will send you a mac browser alert if the eth gas price falls below a threshold of 100 gwei.
 
 ## Notes
 - I think this only works with a mac alert for now.
