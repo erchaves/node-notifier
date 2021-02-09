@@ -62,7 +62,7 @@ const notifyLowGas = function(safeLow) {
   nc.notify(
     {
       title: `Eth Gas Price Is Sane`,
-      message: `Wow, the eth safe low price is only ${safeLow}!`,
+      message: `Wow, the eth safe low price is only ${safeLow} gwei!`,
       sound: 'Funk',
       // case sensitive
       // closeLabel: 'Absolutely not',
