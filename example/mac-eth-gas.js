@@ -1,5 +1,9 @@
 // A bunch of quick code in progress.
 
+const path = require('path');
+const notifier = require('../');
+const config = require(path.resolve('config.json'));
+
 // initialize to active - force to true for now.
 let isAppActivated = true;
 
@@ -18,16 +22,15 @@ const checkStatus = () => {
   };
 }
 
-var notifier = require('../');
-var nc = new notifier.NotificationCenter();
-var crontasks = notifier.crontasks;
-var getEthData = notifier.getEthData;
+const nc = new notifier.NotificationCenter();
+const crontasks = notifier.crontasks;
+const getEthData = notifier.getEthData;
 
-var trueAnswer = 'Most def.';
-var getInGwei = x => x/10;
+const trueAnswer = 'Most def.';
+const getInGwei = x => x/10;
 
 // The amount to check if we're at or below this.
-const threshold = 100;
+const threshold = config.threshold;
 
 const startMsg = `The watcher has started.
 This will ping an Eth GAS API once a minute
@@ -35,26 +38,22 @@ and it will send you a mac browser alert if the eth gas price falls below ${thre
 You can quit with:  ⌘ + .
 `
 
+const onTrigger = () => {
+  getEthData.getData().then(data => {
+    const parsedData = {
+      fast: getInGwei(data.fast),
+      fastest: getInGwei(data.fastest),
+      safeLow: getInGwei(data.safeLow),
+      average: getInGwei(data.average),
+    };
 
-crontasks.cronPingMinute({
-  checkStatus,
-  onTrigger: () => {
-    getEthData.getData().then(data => {
-      const parsedData = {
-        fast: getInGwei(data.fast),
-        fastest: getInGwei(data.fastest),
-        safeLow: getInGwei(data.safeLow),
-        average: getInGwei(data.average),
-      };
+    console.log(parsedData);
 
-      console.log(parsedData);
-
-      if (parsedData.safeLow <= threshold) {
-        notifyLowGas(parsedData.safeLow);
-      }
-    });
-  },
-});
+    if (parsedData.safeLow <= threshold) {
+      notifyLowGas(parsedData.safeLow);
+    }
+  });
+}
 
 const notifyLowGas = function(safeLow) {
   const title = `Wow, Eth Gas price is not horrible`;
@@ -97,4 +96,17 @@ nc.on('replied', function(obj, options, metadata) {
   console.log('User replied', metadata);
 });
 
+
+/////// Kick it off.
+
+// Send the start message.
 console.log(startMsg);
+
+// trigger once to start.
+onTrigger();
+
+// Then start a minutly watch.
+crontasks.cronPingMinute({
+  checkStatus,
+  onTrigger: onTrigger,
+});
